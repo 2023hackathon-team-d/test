@@ -4,21 +4,20 @@
 {% endblock %}
 {% block body %}
   <div class="main-container channelpage">
-    <img src="{{ url_for('static',filename='img/cat-gif-unscreen.gif') }}" id="gif" />
     <div class="bg-img"></div>
     <div class="main-content">
-        <div class="channel-title">
-        <h1>チャンネル一覧</h1>
-        <button id="add-channel-btn">チャンネル追加</button>
-      </div>
+      <div class="channel-title">
+      <h1>channel list</h1>
+      <button id="add-channel-btn"><ion-icon name="add-circle-outline"></ion-icon></button>
+    </div>
+      <ul class="channel-box"></ul>
+      {% include 'modal/add-channel.html' %}
+      {% include 'modal/delete-confirmation.html' %}
       <div class="pagination-container">
         <p id="prev"><</li>
         <ul class="pagination"></ul>
         <p id="next">></p>
       </div>
-      <ul class="channel-box"></ul>
-      {% include 'modal/add-channel.html' %}
-      {% include 'modal/delete-confirmation.html' %}
     </div>
   </div>
 {% endblock %}
