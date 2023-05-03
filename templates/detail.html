@@ -12,28 +12,26 @@
           <p id="chatroom-description">{{ channel.abstract }}</p>
         {% endif %}
         {% if uid == channel.uid %}
-          <button id='channel-update' class="basic-btn smaller-btn">編集</button>
+          <button id='channel-update' class="basic-btn smaller-btn">EDIT</button>
           {% include 'modal/update-channel.html' %}
         {% endif %}
       </div>
-      <div class="cahatbox-img">
-        <div id="message-area">
-          {% if messages|length > 0 %}
-            {% for message in messages %}
-              {% if message.uid == uid %}
-                <div class="my-messages">
-                  <p class="box box-right">{{ message.message }}</p>
-                  <form action="/delete_message" method="POST">
-                    <input type="hidden" value="{{ channel.id }}" name="channel_id" />
-                    <button
+      <div id="message-area">
+        {% if messages|length > 0 %}
+          {% for message in messages %}
+            {% if message.uid == uid %}
+              <div class="my-messages">
+                <p class="box box-right">{{ message.message }}</p>
+                <form action="/delete_message" method="POST">
+                  <input type="hidden" value="{{ channel.id }}" name="channel_id" />
+                  <button
                       class="delete-message-btn"
                       name="message_id"
                       value="{{ message.id }}"
-                    >
-                      <ion-icon name="trash-bin-outline"></ion-icon>
-                    </button>
-                  </form>
-                </div>
+                  >
+                    <ion-icon name="trash-bin-outline"></ion-icon>
+                  </button>
+                </form>
               </div>
             {% else %}
               <div class="messages">
@@ -48,7 +46,7 @@
       </div>
       <div class="typing-box-wrapper">
         <form class="typing-box" action="/message" method="POST">
-          <textarea name="message" id="message" autofocus></textarea>
+          <textarea name="message" placeholder="メッセージを入力する" id="message" autofocus></textarea>
           <input type="hidden" name="channel_id" value="{{ channel.id }}" />
           <button type="submit" id="add-message-btn">
             <ion-icon name="paper-plane"></ion-icon>
